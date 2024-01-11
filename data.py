@@ -35,8 +35,9 @@ try:
             cursor.execute(select_query, ('%' + name + '%',))
             results = cursor.fetchall()
             if results:
-
                 print(f"Found {len(results)} results:")
+                if len(results) > 1:
+                    print(results)
                 # update_query = "UPDATE entries SET column_name = %s WHERE id = %s"
                 # new_value = "New Value"
                 # row_id_to_update = 1

@@ -34,11 +34,12 @@ try:
             cursor = connection.cursor(dictionary=True)
             cursor.execute(select_query, ('%' + name + '%',))
             results = cursor.fetchall()
+
             if results:
                 print(f"Found {len(results)} results:")
                 if len(results) > 1:
-                    for result in results:
-                        print(result['data'])
+                    print(name)
+                    print(results[0]['data']['title'])
             else:
                 num = num + 1
                 # update_query = "UPDATE entries SET column_name = %s WHERE id = %s"

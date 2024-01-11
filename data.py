@@ -40,7 +40,7 @@ try:
                 if len(results) > 1:
                     print(name)
                     for result in results:
-                        print(result['data'])
+                        print(dict(result['data'])['title'])
             else:
                 num = num + 1
                 # update_query = "UPDATE entries SET column_name = %s WHERE id = %s"

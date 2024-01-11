@@ -39,7 +39,8 @@ try:
                 print(f"Found {len(results)} results:")
                 if len(results) > 1:
                     print(name)
-                    print(results[0]['data']['title'])
+                    for result in results:
+                        print(result['data']['title'])
             else:
                 num = num + 1
                 # update_query = "UPDATE entries SET column_name = %s WHERE id = %s"

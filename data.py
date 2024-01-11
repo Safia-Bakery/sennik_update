@@ -37,7 +37,8 @@ try:
             if results:
                 print(f"Found {len(results)} results:")
                 if len(results) > 1:
-                    print(results)
+                    for result in results:
+                        print(result['data'])
                 # update_query = "UPDATE entries SET column_name = %s WHERE id = %s"
                 # new_value = "New Value"
                 # row_id_to_update = 1

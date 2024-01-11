@@ -2,6 +2,7 @@ import mysql.connector
 import pandas as pd
 
 # Specify the path to your Excel file
+import json
 excel_file_path = 'updates.xlsx'
 
 # Read the Excel file into a DataFrame
@@ -40,7 +41,10 @@ try:
                 if len(results) > 1:
                     print(name)
                     for result in results:
-                        print(result)
+                        data_json = result['data']
+                        data_dict = json.loads(data_json)
+                        title = data_dict['title']
+                        print(title)
             else:
                 num = num + 1
                 # update_query = "UPDATE entries SET column_name = %s WHERE id = %s"

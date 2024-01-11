@@ -34,7 +34,6 @@ try:
             cursor = connection.cursor(dictionary=True)
             cursor.execute(select_query, ('%' + name + '%',))
             results = cursor.fetchall()
-            print(results)
             if results:
 
                 print(f"Found {len(results)} results:")

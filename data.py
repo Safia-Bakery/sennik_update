@@ -12,7 +12,7 @@ host = '127.0.0.1'
 user = 'root'
 password = 'onG89aOkmvPnf'
 database = 'safia'
-
+num  =0
 # The search pattern (case-insensitive)
 
 # Establish a connection to MySQL
@@ -30,7 +30,7 @@ try:
         for index, row in df.iterrows():
             name = row['Name']
             price = int(row['Price'])
-            select_query = "SELECT * FROM entries  WHERE JSON_UNQUOTE(JSON_EXTRACT(data, '$.title')) LIKE %s"
+            select_query = "SELECT * FROM entries  WHERE JSON_UNQUOTE(JSON_EXTRACT(data, '$.title')) = %s"
             cursor = connection.cursor(dictionary=True)
             cursor.execute(select_query, ('%' + name + '%',))
             results = cursor.fetchall()
@@ -39,6 +39,8 @@ try:
                 if len(results) > 1:
                     for result in results:
                         print(result['data'])
+            else:
+                num = num + 1
                 # update_query = "UPDATE entries SET column_name = %s WHERE id = %s"
                 # new_value = "New Value"
                 # row_id_to_update = 1
@@ -55,3 +57,4 @@ finally:
         cursor.close()
         connection.close()
         print("MySQL connection closed")
+        print(num)

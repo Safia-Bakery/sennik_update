@@ -41,8 +41,7 @@ try:
                     print(name)
                     for result in results:
                         data_dict = dict(result['data'])
-                        title = data_dict.get('title')
-                        print(title)
+                        print(data_dict)
             else:
                 num = num + 1
                 # update_query = "UPDATE entries SET column_name = %s WHERE id = %s"

@@ -30,7 +30,7 @@ try:
         for index, row in df.iterrows():
             name = row['Name']
             price = int(row['Price'])
-            select_query = "SELECT * FROM entries  WHERE JSON_UNQUOTE(JSON_EXTRACT(data, '$.title')) ILIKE %s"
+            select_query = "SELECT * FROM entries  WHERE JSON_UNQUOTE(JSON_EXTRACT(data, '$.title')) LIKE %s"
             cursor = connection.cursor(dictionary=True)
             cursor.execute(select_query, ('%' + name + '%',))
             results = cursor.fetchall()
